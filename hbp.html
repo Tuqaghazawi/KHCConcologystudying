@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hepatobiliary &amp; Pancreas — KHCC Year 1 Exam</title>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #F8F5F0; --ink: #1A1A18; --ink-muted: #5A5A56; --ink-faint: #9A9A94;
+    --rule: #D8D4CC; --accent: #8B1A1A; --accent-light: #F5EAEA;
+    --teal: #1A5C4A; --teal-light: #E6F0EC; --gold: #8B6914; --gold-light: #F5F0E6;
+    --topic: #1A4A6B; --topic-light: #EAF0F8; --topic-border: #A0B8D4;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--ink); min-height: 100vh; }
+  header { border-bottom: 1px solid var(--rule); padding: 2rem 0 0; background: var(--cream); }
+  .header-inner { max-width: 1100px; margin: 0 auto; padding: 0 2.5rem; }
+  .breadcrumb { font-size: 12px; color: var(--ink-faint); margin-bottom: 0.5rem; }
+  .breadcrumb a { color: var(--accent); text-decoration: none; }
+  .topic-label { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--topic); font-weight: 500; margin-bottom: 0.5rem; }
+  .site-title { font-family: 'EB Garamond', serif; font-size: clamp(2rem, 4vw, 3rem); font-weight: 400; line-height: 1.1; margin-bottom: 0.4rem; }
+  .site-subtitle { font-size: 15px; color: var(--ink-muted); font-weight: 300; margin-bottom: 2rem; }
+  nav { display: flex; gap: 0; border-top: 1px solid var(--rule); overflow-x: auto; }
+  nav a { font-size: 13px; font-weight: 400; color: var(--ink-muted); text-decoration: none; padding: 0.75rem 1.25rem; border-bottom: 2px solid transparent; transition: color 0.2s, border-color 0.2s; white-space: nowrap; }
+  nav a:hover, nav a.active { color: var(--accent); border-bottom-color: var(--accent); }
+  main { max-width: 1100px; margin: 0 auto; padding: 3rem 2.5rem 5rem; }
+  .topic-meta { display: flex; align-items: center; gap: 1rem; margin-bottom: 2.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--rule); flex-wrap: wrap; }
+  .meta-pill { font-size: 12px; padding: 4px 12px; border-radius: 2px; font-weight: 400; border: 1px solid; background: var(--topic-light); color: var(--topic); border-color: var(--topic-border); }
+  .meta-pill-neutral { font-size: 12px; padding: 4px 12px; border-radius: 2px; border: 1px solid; background: white; color: var(--ink-muted); border-color: var(--rule); }
+  .two-col { display: grid; grid-template-columns: 1fr 300px; gap: 2.5rem; align-items: start; }
+  @media (max-width: 768px) { .two-col { grid-template-columns: 1fr; } }
+  .section-label { font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--ink-faint); font-weight: 500; margin-bottom: 1rem; }
+  .artifacts-list { display: flex; flex-direction: column; gap: 1rem; }
+  .artifact-card { background: white; border: 1px solid var(--rule); border-radius: 4px; padding: 1.25rem 1.5rem; text-decoration: none; color: inherit; display: flex; align-items: flex-start; gap: 1rem; transition: border-color 0.2s, box-shadow 0.2s; }
+  .artifact-card:hover { border-color: #C4BFB8; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+  .icon-box { width: 38px; height: 38px; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
+  .i1 { background: var(--topic-light); } .i2 { background: var(--gold-light); } .i3 { background: var(--accent-light); }
+  .artifact-body { flex: 1; }
+  .artifact-title { font-size: 15px; font-weight: 500; margin-bottom: 3px; }
+  .artifact-desc { font-size: 13px; color: var(--ink-muted); line-height: 1.5; }
+  .artifact-tags { display: flex; gap: 6px; margin-top: 8px; flex-wrap: wrap; }
+  .tag { font-size: 11px; padding: 2px 8px; background: var(--cream); border: 1px solid var(--rule); border-radius: 2px; color: var(--ink-faint); }
+  .artifact-arrow { font-size: 16px; color: var(--ink-faint); margin-left: auto; flex-shrink: 0; transition: transform 0.2s, color 0.2s; }
+  .artifact-card:hover .artifact-arrow { transform: translateX(3px); color: var(--topic); }
+  .coming-soon { opacity: 0.5; cursor: default; }
+  .coming-soon:hover { border-color: var(--rule); box-shadow: none; }
+  .coming-badge { font-size: 10px; padding: 2px 7px; background: var(--gold-light); color: var(--gold); border: 1px solid #D4C090; border-radius: 2px; font-weight: 500; margin-left: 8px; }
+  .sidebar { display: flex; flex-direction: column; gap: 1.25rem; }
+  .sidebar-card { background: white; border: 1px solid var(--rule); border-radius: 4px; padding: 1.25rem; }
+  .sidebar-card h3 { font-family: 'EB Garamond', serif; font-size: 1.05rem; font-weight: 500; margin-bottom: 0.75rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--rule); }
+  .key-topics { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+  .key-topics li { font-size: 13px; color: var(--ink-muted); display: flex; align-items: baseline; gap: 0.5rem; }
+  .key-topics li::before { content: '—'; color: var(--ink-faint); flex-shrink: 0; }
+  .notebook-link { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; color: inherit; padding: 0.75rem 1rem; background: var(--teal-light); border: 1px solid #A0C4B8; border-radius: 4px; transition: background 0.2s; }
+  .notebook-link:hover { background: #D0E8E0; }
+  .notebook-link-text strong { display: block; font-size: 13px; font-weight: 500; color: var(--teal); }
+  .notebook-link-text span { font-size: 12px; color: var(--teal); opacity: 0.8; }
+  .progress-bar { height: 5px; background: var(--rule); border-radius: 3px; overflow: hidden; margin-top: 8px; }
+  .progress-fill { height: 100%; background: var(--topic); border-radius: 3px; }
+  .progress-label { display: flex; justify-content: space-between; font-size: 12px; color: var(--ink-faint); margin-top: 0.5rem; }
+  footer { border-top: 1px solid var(--rule); padding: 1.5rem 2.5rem; text-align: center; font-size: 12px; color: var(--ink-faint); }
+
+</style>
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <p class="breadcrumb"><a href="index.html">All Topics</a> / Hepatobiliary &amp; Pancreas</p>
+    <p class="topic-label">Mid-weight Topic · 10–15 Marks</p>
+    <h1 class="site-title">Hepatobiliary &amp; Pancreas</h1>
+    <p class="site-subtitle">HCC, cholangiocarcinoma, pancreatic adenocarcinoma — staging, SBRT, and systemic integration.</p>
+    <nav>
+      <a href="index.html">← All Topics</a>
+      <a href="breast.html">Breast</a>
+      <a href="colorectal.html">Colorectal</a>
+      <a href="thyroid.html">Thyroid</a>
+      <a href="hbp.html" class="active">HBP</a>
+      <a href="ugi.html">UGI</a>
+      <a href="research.html">Research</a>
+      <a href="basic.html">Basic &amp; Subspecialties</a>
+    </nav>
+  </div>
+</header>
+<main>
+  <div class="topic-meta">
+    <span class="meta-pill">10–15 marks</span>
+    <span class="meta-pill-neutral">Radiation oncology</span>
+  </div>
+  <div class="two-col">
+    <div>
+      <p class="section-label">Study Artifacts</p>
+      <div class="artifacts-list">
+        <a href="#" class="artifact-card">
+          <div class="icon-box i1">🎯</div>
+          <div class="artifact-body">
+            <p class="artifact-title">HCC Staging — BCLC Explorer</p>
+            <p class="artifact-desc">Navigate the Barcelona Clinic Liver Cancer staging system and link each stage to recommended treatment.</p>
+            <div class="artifact-tags"><span class="tag">HCC</span><span class="tag">BCLC</span><span class="tag">Staging</span></div>
+          </div>
+          <span class="artifact-arrow">→</span>
+        </a>
+        <a href="#" class="artifact-card">
+          <div class="icon-box i2">📝</div>
+          <div class="artifact-body">
+            <p class="artifact-title">Liver SBRT Dose Fractionation Quiz</p>
+            <p class="artifact-desc">Which dose-fractionation schedule for which clinical scenario? Evidence-based decision making.</p>
+            <div class="artifact-tags"><span class="tag">SBRT</span><span class="tag">Dose</span><span class="tag">MCQ</span></div>
+          </div>
+          <span class="artifact-arrow">→</span>
+        </a>
+        <div class="artifact-card coming-soon">
+          <div class="icon-box i3">📋</div>
+          <div class="artifact-body">
+            <p class="artifact-title">Pancreatic Cancer — Borderline Resectable <span class="coming-badge">Coming soon</span></p>
+            <p class="artifact-desc">Definitions, chemoradiation approaches, and surgical criteria.</p>
+            <div class="artifact-tags"><span class="tag">Pancreas</span><span class="tag">Borderline</span><span class="tag">Notes</span></div>
+          </div>
+        </div>
+        <div class="artifact-card coming-soon">
+          <div class="icon-box i1">🔬</div>
+          <div class="artifact-body">
+            <p class="artifact-title">Dose Constraints — Liver, Bowel, Duodenum <span class="coming-badge">Coming soon</span></p>
+            <p class="artifact-desc">OAR constraints for liver SBRT and conventional RT with clinical context.</p>
+            <div class="artifact-tags"><span class="tag">Constraints</span><span class="tag">OARs</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <aside class="sidebar">
+      <a href="#" class="notebook-link">
+        <span style="font-size:20px;">📓</span>
+        <div class="notebook-link-text">
+          <strong>Open NotebookLM</strong>
+          <span>Hepatobiliary &amp; Pancreas notebook →</span>
+        </div>
+      </a>
+      <div class="sidebar-card">
+        <h3>Module Progress</h3>
+        <div class="progress-label"><span>Artifacts complete</span><span>1 / 4</span></div>
+        <div class="progress-bar"><div class="progress-fill" style="width: 25%"></div></div>
+      </div>
+      <div class="sidebar-card">
+        <h3>Key Exam Topics</h3>
+        <ul class="key-topics">
+          <li>HCC staging systems (BCLC)</li>
+          <li>Liver SBRT — dose fractionation</li>
+          <li>Pancreatic cancer — borderline resectable</li>
+          <li>Cholangiocarcinoma RT indications</li>
+          <li>Child-Pugh score in RT planning</li>
+          <li>Dose constraints — liver, stomach, duodenum</li>
+          <li>FOLFIRINOX and gemcitabine sequencing</li>
+          <li>SBRT vs conventional RT evidence</li>
+          <li>Portal vein tumour thrombus management</li>
+        </ul>
+      </div>
+      <div class="sidebar-card">
+        <h3>Exam Weight</h3>
+        <p style="font-size:13px; color:var(--ink-muted); line-height:1.6;">
+          <strong style="font-size:2rem; font-family:'EB Garamond',serif; color:var(--topic); font-weight:400;">10–15</strong><br>
+          marks out of 100 on the written examination.
+        </p>
+      </div>
+    </aside>
+  </div>
+</main>
+<footer>King Hussein Cancer Center · Radiation Oncology · Year 1 Exam Preparation</footer>
+</body>
+</html>

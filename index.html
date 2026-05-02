@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KHCC Oncology — Year 1 Exam Preparation</title>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --cream: #F8F5F0;
+    --ink: #1A1A18;
+    --ink-muted: #5A5A56;
+    --ink-faint: #9A9A94;
+    --rule: #D8D4CC;
+    --accent: #8B1A1A;
+    --accent-light: #F5EAEA;
+    --teal: #1A5C4A;
+    --teal-light: #E6F0EC;
+    --gold: #8B6914;
+    --gold-light: #F5F0E6;
+  }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    min-height: 100vh;
+  }
+
+  /* HEADER */
+  header {
+    border-bottom: 1px solid var(--rule);
+    padding: 2rem 0 0;
+    background: var(--cream);
+  }
+
+  .header-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 2.5rem;
+  }
+
+  .institution-line {
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 500;
+    margin-bottom: 0.75rem;
+  }
+
+  .site-title {
+    font-family: 'EB Garamond', serif;
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    font-weight: 400;
+    line-height: 1.1;
+    color: var(--ink);
+    margin-bottom: 0.5rem;
+  }
+
+  .site-subtitle {
+    font-size: 15px;
+    color: var(--ink-muted);
+    font-weight: 300;
+    margin-bottom: 2rem;
+  }
+
+  nav {
+    display: flex;
+    gap: 0;
+    border-top: 1px solid var(--rule);
+  }
+
+  nav a {
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--ink-muted);
+    text-decoration: none;
+    padding: 0.75rem 1.25rem;
+    border-bottom: 2px solid transparent;
+    transition: color 0.2s, border-color 0.2s;
+    letter-spacing: 0.02em;
+  }
+
+  nav a:hover, nav a.active {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+  }
+
+  /* MAIN */
+  main {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 3rem 2.5rem 5rem;
+  }
+
+  /* EXAM SCORE TABLE */
+  .exam-context {
+    background: white;
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    padding: 1.5rem 2rem;
+    margin-bottom: 3rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .exam-context-label {
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+  }
+
+  .exam-context h3 {
+    font-family: 'EB Garamond', serif;
+    font-size: 1.1rem;
+    font-weight: 500;
+    margin-bottom: 0.25rem;
+  }
+
+  .score-chips {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-top: 0.75rem;
+  }
+
+  .chip {
+    font-size: 12px;
+    padding: 3px 10px;
+    border-radius: 2px;
+    font-weight: 400;
+    border: 1px solid;
+  }
+
+  .chip-red { background: var(--accent-light); color: var(--accent); border-color: #D4A0A0; }
+  .chip-teal { background: var(--teal-light); color: var(--teal); border-color: #A0C4B8; }
+  .chip-gold { background: var(--gold-light); color: var(--gold); border-color: #C4B080; }
+
+  /* SECTION HEADING */
+  .section-header {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .section-header h2 {
+    font-family: 'EB Garamond', serif;
+    font-size: 1.5rem;
+    font-weight: 400;
+  }
+
+  .section-header span {
+    font-size: 13px;
+    color: var(--ink-faint);
+  }
+
+  /* MODULE GRID */
+  .modules-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.25rem;
+    margin-bottom: 3rem;
+  }
+
+  .module-card {
+    background: white;
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    padding: 1.5rem;
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .module-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 3px; height: 100%;
+    background: var(--card-accent, var(--accent));
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+
+  .module-card:hover {
+    border-color: #C4BFB8;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+
+  .module-card:hover::before { opacity: 1; }
+
+  .card-type {
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    font-weight: 500;
+  }
+
+  .card-title {
+    font-family: 'EB Garamond', serif;
+    font-size: 1.25rem;
+    font-weight: 500;
+    line-height: 1.25;
+  }
+
+  .card-desc {
+    font-size: 13.5px;
+    color: var(--ink-muted);
+    line-height: 1.6;
+    flex: 1;
+  }
+
+  .card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--rule);
+  }
+
+  .card-marks {
+    font-size: 12px;
+    color: var(--ink-faint);
+  }
+
+  .card-marks strong {
+    color: var(--ink);
+    font-weight: 500;
+  }
+
+  .card-arrow {
+    font-size: 14px;
+    color: var(--ink-faint);
+    transition: transform 0.2s, color 0.2s;
+  }
+
+  .module-card:hover .card-arrow {
+    transform: translateX(3px);
+    color: var(--accent);
+  }
+
+  .badge-coming {
+    font-size: 10px;
+    padding: 2px 8px;
+    background: var(--gold-light);
+    color: var(--gold);
+    border: 1px solid #D4C090;
+    border-radius: 2px;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+  }
+
+  /* accent colors per topic */
+  .card-breast { --card-accent: #8B1A1A; }
+  .card-colorectal { --card-accent: #1A5C4A; }
+  .card-thyroid { --card-accent: #5A3A8B; }
+  .card-hbp { --card-accent: #1A4A6B; }
+  .card-ugi { --card-accent: #8B5E1A; }
+  .card-research { --card-accent: #3A6B1A; }
+  .card-basic { --card-accent: #6B1A5A; }
+
+  /* NOTEBOOK LINK BANNER */
+  .notebook-banner {
+    background: white;
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    padding: 1.25rem 1.75rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 2.5rem;
+    text-decoration: none;
+    color: inherit;
+    transition: border-color 0.2s;
+  }
+
+  .notebook-banner:hover { border-color: #A0A09A; }
+
+  .notebook-icon {
+    width: 36px; height: 36px;
+    background: var(--teal-light);
+    border-radius: 4px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+
+  .notebook-banner-text { flex: 1; }
+  .notebook-banner-text strong { display: block; font-size: 14px; font-weight: 500; margin-bottom: 2px; }
+  .notebook-banner-text span { font-size: 13px; color: var(--ink-muted); }
+  .notebook-banner-cta { font-size: 13px; color: var(--teal); font-weight: 500; }
+
+  /* FOOTER */
+  footer {
+    border-top: 1px solid var(--rule);
+    padding: 1.5rem 2.5rem;
+    text-align: center;
+    font-size: 12px;
+    color: var(--ink-faint);
+    letter-spacing: 0.04em;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <p class="institution-line">King Hussein Cancer Center · Radiation Oncology</p>
+    <h1 class="site-title">Year 1 Exam<br>Study Hub</h1>
+    <p class="site-subtitle">Interactive artifacts, clinical notes, and study tools — organized by written exam topic.</p>
+    <nav>
+      <a href="index.html" class="active">All Topics</a>
+      <a href="breast.html">Breast</a>
+      <a href="colorectal.html">Colorectal</a>
+      <a href="thyroid.html">Thyroid</a>
+      <a href="hbp.html">HBP</a>
+      <a href="ugi.html">UGI</a>
+      <a href="research.html">Research</a>
+      <a href="basic.html">Basic &amp; Subspecialties</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <!-- Exam context strip -->
+  <div class="exam-context">
+    <div>
+      <p class="exam-context-label">Written Exam Structure</p>
+      <h3>1st Year Board Examination</h3>
+      <p style="font-size:13px; color:var(--ink-muted); margin-top:4px;">Total: /100 &nbsp;·&nbsp; Adjusted: /20</p>
+    </div>
+    <div>
+      <p class="exam-context-label">Topic Score Allocation</p>
+      <div class="score-chips">
+        <span class="chip chip-red">Breast 18–20</span>
+        <span class="chip chip-red">Colorectal 18–20</span>
+        <span class="chip chip-teal">Thyroid 10–15</span>
+        <span class="chip chip-teal">HBP 10–15</span>
+        <span class="chip chip-teal">UGI 10–15</span>
+        <span class="chip chip-gold">Research 5</span>
+        <span class="chip chip-gold">Basic · Melanoma · Sarcoma · Subspecialties 15</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- High-weight topics -->
+  <div class="section-header">
+    <h2>High-weight Topics</h2>
+    <span>18–20 marks each</span>
+  </div>
+
+  <div class="modules-grid">
+
+    <a href="breast.html" class="module-card card-breast">
+      <span class="card-type">Supervised Learning</span>
+      <h2 class="card-title">Breast Cancer</h2>
+      <p class="card-desc">Staging, receptor subtypes, treatment pathways, radiotherapy planning, and landmark trials.</p>
+      <div class="card-footer">
+        <span class="card-marks">Exam weight: <strong>18–20 marks</strong></span>
+        <span class="card-arrow">→</span>
+      </div>
+    </a>
+
+    <a href="colorectal.html" class="module-card card-colorectal">
+      <span class="card-type">Supervised Learning</span>
+      <h2 class="card-title">Colorectal Cancer</h2>
+      <p class="card-desc">Colon and rectal anatomy, TNM staging, neoadjuvant RT, CRT protocols, and dose constraints.</p>
+      <div class="card-footer">
+        <span class="card-marks">Exam weight: <strong>18–20 marks</strong></span>
+        <span class="card-arrow">→</span>
+      </div>
+    </a>
+
+  </div>
+
+  <!-- Mid-weight topics -->
+  <div class="section-header">
+    <h2>Mid-weight Topics</h2>
+    <span>10–15 marks each</span>
+  </div>
+
+  <div class="modules-grid">
+
+    <a href="thyroid.html" class="module-card card-thyroid">
+      <span class="card-type">Supervised Learning</span>
+      <h2 class="card-title">Thyroid Cancer</h2>
+      <p class="card-desc">Differentiated, medullary, and anaplastic subtypes, RAI, external beam, and follicular anatomy.</p>
+      <div class="card-footer">
+        <span class="card-marks">Exam weight: <strong>10–15 marks</strong></span>
+        <span class="card-arrow">→</span>
+      </div>
+    </a>
+
+    <a href="hbp.html" class="module-card card-hbp">
+      <span class="card-type">Supervised Learning</span>
+      <h2 class="card-title">Hepatobiliary &amp; Pancreas</h2>
+      <p class="card-desc">HCC, cholangiocarcinoma, pancreatic adenocarcinoma — staging, SBRT, and systemic integration.</p>
+      <div class="card-footer">
+        <span class="card-marks">Exam weight: <strong>10–15 marks</strong></span>
+        <span class="card-arrow">→</span>
+      </div>
+    </a>
+
+    <a href="ugi.html" class="module-card card-ugi">
+      <span class="card-type">Supervised Learning</span>
+      <h2 class="card-title">Upper GI</h2>
+      <p class="card-desc">Esophageal and gastric cancers, Siewert classification, chemoradiation, and surgical considerations.</p>
+      <div class="card-footer">
+        <span class="card-marks">Exam weight: <strong>10–15 marks</strong></span>
+        <span class="card-arrow">→</span>
+      </div>
+    </a>
+
+  </div>
+
+  <!-- Supporting topics -->
+  <div class="section-header">
+    <h2>Supporting Topics</h2>
+    <span>5–15 marks</span>
+  </div>
+
+  <div class="modules-grid">
+
+    <a href="research.html" class="module-card card-research">
+      <span class="card-type">Methodology</span>
+      <h2 class="card-title">Research &amp; Statistics</h2>
+      <p class="card-desc">Study design, biostatistics, evidence levels, landmark trial interpretation, and critical appraisal.</p>
+      <div class="card-footer">
+        <span class="card-marks">Exam weight: <strong>5 marks</strong></span>
+        <span class="card-arrow">→</span>
+      </div>
+    </a>
+
+    <a href="basic.html" class="module-card card-basic">
+      <span class="card-type">Basic Science &amp; Subspecialties</span>
+      <h2 class="card-title">Basic Science, Melanoma &amp; Sarcoma</h2>
+      <p class="card-desc">Radiobiology fundamentals, melanoma staging and immunotherapy, soft-tissue sarcoma RT, and subspecialty topics.</p>
+      <div class="card-footer">
+        <span class="card-marks">Exam weight: <strong>15 marks</strong></span>
+        <span class="card-arrow">→</span>
+      </div>
+    </a>
+
+  </div>
+
+  <!-- NotebookLM banner -->
+  <a href="#" class="notebook-banner" id="notebookLink">
+    <div class="notebook-icon">📓</div>
+    <div class="notebook-banner-text">
+      <strong>NotebookLM Study Notebooks</strong>
+      <span>AI-powered notes linked to each topic — open from the individual topic pages.</span>
+    </div>
+    <span class="notebook-banner-cta">Browse topics →</span>
+  </a>
+
+</main>
+
+<footer>
+  King Hussein Cancer Center · Radiation Oncology · Year 1 Exam Preparation · Updated as you study
+</footer>
+
+</body>
+</html>
