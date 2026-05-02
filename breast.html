@@ -6,109 +6,68 @@
 <title>Breast Cancer — KHCC Year 1 Exam</title>
 <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   :root {
     --cream: #F8F5F0; --ink: #1A1A18; --ink-muted: #5A5A56; --ink-faint: #9A9A94;
     --rule: #D8D4CC; --accent: #8B1A1A; --accent-light: #F5EAEA;
     --teal: #1A5C4A; --teal-light: #E6F0EC; --gold: #8B6914; --gold-light: #F5F0E6;
+    --topic: #8B1A1A; --pill-bg: #F5EAEA; --pill-border: #D4A0A0;
   }
-  body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--ink); min-height: 100vh; }
 
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--ink); min-height: 100vh; }
   header { border-bottom: 1px solid var(--rule); padding: 2rem 0 0; background: var(--cream); }
   .header-inner { max-width: 1100px; margin: 0 auto; padding: 0 2.5rem; }
   .breadcrumb { font-size: 12px; color: var(--ink-faint); margin-bottom: 0.5rem; }
   .breadcrumb a { color: var(--accent); text-decoration: none; }
-  .topic-label { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); font-weight: 500; margin-bottom: 0.5rem; }
+  .topic-label { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--topic); font-weight: 500; margin-bottom: 0.5rem; }
   .site-title { font-family: 'EB Garamond', serif; font-size: clamp(2rem, 4vw, 3rem); font-weight: 400; line-height: 1.1; margin-bottom: 0.4rem; }
   .site-subtitle { font-size: 15px; color: var(--ink-muted); font-weight: 300; margin-bottom: 2rem; }
-
   nav { display: flex; gap: 0; border-top: 1px solid var(--rule); overflow-x: auto; }
   nav a { font-size: 13px; font-weight: 400; color: var(--ink-muted); text-decoration: none; padding: 0.75rem 1.25rem; border-bottom: 2px solid transparent; transition: color 0.2s, border-color 0.2s; white-space: nowrap; }
-  nav a:hover { color: var(--accent); border-bottom-color: var(--accent); }
-  nav a.active { color: var(--accent); border-bottom-color: var(--accent); }
-
+  nav a:hover, nav a.active { color: var(--accent); border-bottom-color: var(--accent); }
   main { max-width: 1100px; margin: 0 auto; padding: 3rem 2.5rem 5rem; }
-
-  .topic-meta {
-    display: flex; align-items: center; gap: 1rem; margin-bottom: 2.5rem;
-    padding-bottom: 1.5rem; border-bottom: 1px solid var(--rule); flex-wrap: wrap;
-  }
-  .meta-pill {
-    font-size: 12px; padding: 4px 12px; border-radius: 2px; font-weight: 400; border: 1px solid;
-    background: var(--accent-light); color: var(--accent); border-color: #D4A0A0;
-  }
-  .meta-pill-neutral {
-    font-size: 12px; padding: 4px 12px; border-radius: 2px; font-weight: 400; border: 1px solid;
-    background: white; color: var(--ink-muted); border-color: var(--rule);
-  }
-
+  .topic-meta { display: flex; align-items: center; gap: 1rem; margin-bottom: 2.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--rule); flex-wrap: wrap; }
+  .meta-pill { font-size: 12px; padding: 4px 12px; border-radius: 2px; font-weight: 400; border: 1px solid; background: var(--pill-bg); color: var(--topic); border-color: var(--pill-border); }
+  .meta-pill-neutral { font-size: 12px; padding: 4px 12px; border-radius: 2px; border: 1px solid; background: white; color: var(--ink-muted); border-color: var(--rule); }
   .two-col { display: grid; grid-template-columns: 1fr 300px; gap: 2.5rem; align-items: start; }
   @media (max-width: 768px) { .two-col { grid-template-columns: 1fr; } }
-
-  /* ARTIFACT CARDS */
   .section-label { font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--ink-faint); font-weight: 500; margin-bottom: 1rem; }
-  .artifacts-list { display: flex; flex-direction: column; gap: 1rem; margin-bottom: 2.5rem; }
-
-  .artifact-card {
-    background: white; border: 1px solid var(--rule); border-radius: 4px; padding: 1.25rem 1.5rem;
-    text-decoration: none; color: inherit; display: flex; align-items: flex-start; gap: 1rem;
-    transition: border-color 0.2s, box-shadow 0.2s; position: relative;
-  }
+  .artifacts-list { display: flex; flex-direction: column; gap: 1rem; }
+  .artifact-card { background: white; border: 1px solid var(--rule); border-radius: 4px; padding: 1.25rem 1.5rem; text-decoration: none; color: inherit; display: flex; align-items: flex-start; gap: 1rem; transition: border-color 0.2s, box-shadow 0.2s; }
+  .artifact-card.live { border-left: 3px solid var(--teal); }
   .artifact-card:hover { border-color: #C4BFB8; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
-
-  .artifact-type-icon {
-    width: 38px; height: 38px; border-radius: 4px; display: flex; align-items: center;
-    justify-content: center; font-size: 18px; flex-shrink: 0;
-  }
-  .icon-interactive { background: var(--accent-light); }
-  .icon-notes { background: var(--teal-light); }
-  .icon-quiz { background: var(--gold-light); }
-  .icon-notebook { background: #EEF0F5; }
-
+  .icon-box { width: 38px; height: 38px; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
   .artifact-body { flex: 1; }
   .artifact-title { font-size: 15px; font-weight: 500; margin-bottom: 3px; }
   .artifact-desc { font-size: 13px; color: var(--ink-muted); line-height: 1.5; }
-
   .artifact-tags { display: flex; gap: 6px; margin-top: 8px; flex-wrap: wrap; }
   .tag { font-size: 11px; padding: 2px 8px; background: var(--cream); border: 1px solid var(--rule); border-radius: 2px; color: var(--ink-faint); }
-
+  .tag-live { background: var(--teal-light); border-color: #A0C4B8; color: var(--teal); font-weight: 500; }
   .artifact-arrow { font-size: 16px; color: var(--ink-faint); margin-left: auto; flex-shrink: 0; transition: transform 0.2s, color 0.2s; }
-  .artifact-card:hover .artifact-arrow { transform: translateX(3px); color: var(--accent); }
-
+  .artifact-card:hover .artifact-arrow { transform: translateX(3px); color: var(--topic); }
   .coming-soon { opacity: 0.5; cursor: default; }
   .coming-soon:hover { border-color: var(--rule); box-shadow: none; }
+  .live-badge { font-size: 10px; padding: 2px 7px; background: var(--teal-light); color: var(--teal); border: 1px solid #A0C4B8; border-radius: 2px; font-weight: 500; margin-left: 8px; }
   .coming-badge { font-size: 10px; padding: 2px 7px; background: var(--gold-light); color: var(--gold); border: 1px solid #D4C090; border-radius: 2px; font-weight: 500; margin-left: 8px; }
-
-  /* SIDEBAR */
+  .source-line { font-size: 11px; color: var(--ink-faint); margin-top: 6px; font-style: italic; }
   .sidebar { display: flex; flex-direction: column; gap: 1.25rem; }
-
   .sidebar-card { background: white; border: 1px solid var(--rule); border-radius: 4px; padding: 1.25rem; }
   .sidebar-card h3 { font-family: 'EB Garamond', serif; font-size: 1.05rem; font-weight: 500; margin-bottom: 0.75rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--rule); }
-
   .key-topics { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
   .key-topics li { font-size: 13px; color: var(--ink-muted); display: flex; align-items: baseline; gap: 0.5rem; }
   .key-topics li::before { content: '—'; color: var(--ink-faint); flex-shrink: 0; }
-
-  .notebook-link {
-    display: flex; align-items: center; gap: 0.75rem; text-decoration: none; color: inherit;
-    padding: 0.75rem 1rem; background: var(--teal-light); border: 1px solid #A0C4B8; border-radius: 4px;
-    transition: background 0.2s;
-  }
+  .notebook-link { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; color: inherit; padding: 0.75rem 1rem; background: var(--teal-light); border: 1px solid #A0C4B8; border-radius: 4px; transition: background 0.2s; }
   .notebook-link:hover { background: #D0E8E0; }
-  .notebook-link-icon { font-size: 20px; }
   .notebook-link-text strong { display: block; font-size: 13px; font-weight: 500; color: var(--teal); }
   .notebook-link-text span { font-size: 12px; color: var(--teal); opacity: 0.8; }
+  .progress-bar { height: 5px; background: var(--rule); border-radius: 3px; overflow: hidden; margin-top: 6px; }
+  .progress-fill { height: 100%; background: var(--topic); border-radius: 3px; }
+  .progress-label { display: flex; justify-content: space-between; font-size: 12px; color: var(--ink-faint); margin-top: 0.5rem; }
+  footer { border-top: 1px solid var(--rule); padding: 1.5rem 2.5rem; text-align: center; font-size: 12px; color: var(--ink-faint); }
 
-  .progress-bar-wrap { margin-top: 0.5rem; }
-  .progress-bar-label { display: flex; justify-content: space-between; font-size: 12px; color: var(--ink-faint); margin-bottom: 4px; }
-  .progress-bar { height: 5px; background: var(--rule); border-radius: 3px; overflow: hidden; }
-  .progress-fill { height: 100%; background: var(--accent); border-radius: 3px; }
-
-  footer { border-top: 1px solid var(--rule); padding: 1.5rem 2.5rem; text-align: center; font-size: 12px; color: var(--ink-faint); letter-spacing: 0.04em; }
 </style>
 </head>
 <body>
-
 <header>
   <div class="header-inner">
     <p class="breadcrumb"><a href="index.html">All Topics</a> / Breast Cancer</p>
@@ -127,131 +86,90 @@
     </nav>
   </div>
 </header>
-
 <main>
   <div class="topic-meta">
     <span class="meta-pill">18–20 marks</span>
-    <span class="meta-pill-neutral">Supervised learning</span>
-    <span class="meta-pill-neutral">Radiation oncology</span>
+    <span class="meta-pill-neutral">2 artifacts published</span>
   </div>
-
   <div class="two-col">
-
     <div>
-      <!-- Interactive Artifacts -->
-      <p class="section-label">Interactive Study Artifacts</p>
+      <p class="section-label">Study Artifacts</p>
       <div class="artifacts-list">
-
-        <a href="#" class="artifact-card">
-          <div class="artifact-type-icon icon-interactive">🎯</div>
+        <a href="nccn_breast_2026_summary.html" class="artifact-card live" target="_blank">
+          <div class="icon-box" style="background:#F5EAEA">📋</div>
           <div class="artifact-body">
-            <p class="artifact-title">Breast Cancer Staging Explorer</p>
-            <p class="artifact-desc">Interactive TNM staging tool — click through T, N, M categories and see the stage group and clinical implications update live.</p>
-            <div class="artifact-tags">
-              <span class="tag">TNM</span><span class="tag">Staging</span><span class="tag">Interactive</span>
-            </div>
+            <p class="artifact-title">NCCN Breast Cancer Guidelines v2.2026 <span class="live-badge">Live</span></p>
+            <p class="artifact-desc">Interactive 10-tab visual reference covering subtypes, DCIS, adjuvant therapy, neoadjuvant, targeted agents, radiation, stage IV, surgery, and surveillance. Includes all 2026 updates.</p>
+            <div class="artifact-tags"><span class="tag tag-live">Published</span><span class="tag">NCCN 2026</span><span class="tag">10 tabs</span><span class="tag">Subtypes</span><span class="tag">RT principles</span></div>
+            <p class="source-line">Claude.ai chat · Apr 2026</p>
           </div>
           <span class="artifact-arrow">→</span>
         </a>
-
-        <a href="#" class="artifact-card">
-          <div class="artifact-type-icon icon-quiz">📝</div>
+        <a href="Breast_Cancer_Fellowship_Lecture.pptx" class="artifact-card live" target="_blank">
+          <div class="icon-box" style="background:#E6F0EC">🎓</div>
           <div class="artifact-body">
-            <p class="artifact-title">Receptor Subtypes MCQ Quiz</p>
-            <p class="artifact-desc">HR+/HER2+/TNBC — test your understanding of subtype classification, treatment sequencing, and prognosis.</p>
-            <div class="artifact-tags">
-              <span class="tag">MCQ</span><span class="tag">Subtypes</span><span class="tag">ER/PR/HER2</span>
-            </div>
+            <p class="artifact-title">Breast Cancer Fellowship Lecture (PPTX) <span class="live-badge">Live</span></p>
+            <p class="artifact-desc">20-slide interactive lecture covering staging, subtypes, surgical options (Z0011, NSABP B-06), systemic therapy pathways, and high-yield exam takeaways.</p>
+            <div class="artifact-tags"><span class="tag tag-live">Published</span><span class="tag">PPTX</span><span class="tag">20 slides</span><span class="tag">Z0011</span><span class="tag">NSABP</span></div>
+            <p class="source-line">Claude.ai chat · Apr 2026</p>
           </div>
           <span class="artifact-arrow">→</span>
         </a>
-
-        <a href="#" class="artifact-card">
-          <div class="artifact-type-icon icon-interactive">🔬</div>
-          <div class="artifact-body">
-            <p class="artifact-title">RT Planning — Target Volumes</p>
-            <p class="artifact-desc">Step through CTV and PTV definitions for whole breast, chest wall, and nodal irradiation with annotated diagrams.</p>
-            <div class="artifact-tags">
-              <span class="tag">Contouring</span><span class="tag">CTV</span><span class="tag">Nodal RT</span>
-            </div>
-          </div>
-          <span class="artifact-arrow">→</span>
-        </a>
-
         <div class="artifact-card coming-soon">
-          <div class="artifact-type-icon icon-notes">📋</div>
+          <div class="icon-box" style="background:#F5F0E6">📝</div>
           <div class="artifact-body">
-            <p class="artifact-title">Landmark Trials Summary <span class="coming-badge">Coming soon</span></p>
-            <p class="artifact-desc">NSABP B-06, EBCTCG meta-analyses, FAST-Forward, SUPREMO — key numbers and take-home messages.</p>
-            <div class="artifact-tags">
-              <span class="tag">Trials</span><span class="tag">Evidence</span>
-            </div>
+            <p class="artifact-title">Breast MCQ Quiz <span class="coming-badge">Coming soon</span></p>
+            <p class="artifact-desc">Exam-style questions on staging, receptor subtypes, RT planning, dose constraints, and landmark trials.</p>
+            <div class="artifact-tags"><span class="tag">MCQ</span><span class="tag">Exam prep</span></div>
           </div>
         </div>
-
         <div class="artifact-card coming-soon">
-          <div class="artifact-type-icon icon-quiz">📝</div>
+          <div class="icon-box" style="background:#F5EAEA">🔬</div>
           <div class="artifact-body">
-            <p class="artifact-title">Dose Constraints Practice <span class="coming-badge">Coming soon</span></p>
-            <p class="artifact-desc">Heart, lung, and contralateral breast constraints — apply them to clinical scenarios.</p>
-            <div class="artifact-tags">
-              <span class="tag">Dose</span><span class="tag">OARs</span>
-            </div>
+            <p class="artifact-title">RT Target Volumes — Annotated Guide <span class="coming-badge">Coming soon</span></p>
+            <p class="artifact-desc">CTV/PTV definitions for whole breast, chest wall, and nodal irradiation.</p>
+            <div class="artifact-tags"><span class="tag">Contouring</span><span class="tag">CTV</span><span class="tag">Nodal</span></div>
           </div>
         </div>
-
       </div>
     </div>
-
-    <!-- SIDEBAR -->
     <aside class="sidebar">
-
-      <a href="#" class="notebook-link" id="notebookBtn">
-        <span class="notebook-link-icon">📓</span>
+      <a href="#" class="notebook-link">
+        <span style="font-size:20px;">📓</span>
         <div class="notebook-link-text">
           <strong>Open NotebookLM</strong>
-          <span>Breast Cancer study notebook →</span>
+          <span>Breast Cancer notebook →</span>
         </div>
       </a>
-
       <div class="sidebar-card">
         <h3>Module Progress</h3>
-        <div class="progress-bar-wrap">
-          <div class="progress-bar-label"><span>Artifacts complete</span><span>2 / 5</span></div>
-          <div class="progress-bar"><div class="progress-fill" style="width: 40%"></div></div>
-        </div>
+        <div class="progress-label"><span>Artifacts published</span><span>2 / 4</span></div>
+        <div class="progress-bar"><div class="progress-fill" style="width: 50%"></div></div>
       </div>
-
       <div class="sidebar-card">
         <h3>Key Exam Topics</h3>
         <ul class="key-topics">
           <li>TNM staging (8th edition)</li>
           <li>Receptor subtype classification</li>
           <li>Indications for PMRT</li>
-          <li>Boost — indications &amp; technique</li>
+          <li>Boost — indications & technique</li>
           <li>Nodal target volumes</li>
           <li>Hypofractionation evidence</li>
           <li>Dose constraints (heart, lung)</li>
-          <li>SLNB vs ALND in RT planning</li>
+          <li>SLNB vs ALND</li>
           <li>Landmark trial numbers</li>
         </ul>
       </div>
-
       <div class="sidebar-card">
         <h3>Exam Weight</h3>
         <p style="font-size:13px; color:var(--ink-muted); line-height:1.6;">
-          <strong style="font-size:2rem; font-family:'EB Garamond',serif; color:var(--accent); font-weight:400;">18–20</strong><br>
-          marks out of 100 on the written exam. One of the two highest-weighted topics.
+          <strong style="font-size:2rem; font-family:'EB Garamond',serif; color:var(--topic); font-weight:400;">18–20</strong><br>
+          marks out of 100. One of the two highest-weighted topics.
         </p>
       </div>
-
     </aside>
   </div>
 </main>
-
-<footer>
-  King Hussein Cancer Center · Radiation Oncology · Year 1 Exam Preparation
-</footer>
-
+<footer>King Hussein Cancer Center · Radiation Oncology · Year 1 Exam Preparation</footer>
 </body>
 </html>

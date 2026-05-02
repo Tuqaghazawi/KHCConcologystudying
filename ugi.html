@@ -10,7 +10,7 @@
     --cream: #F8F5F0; --ink: #1A1A18; --ink-muted: #5A5A56; --ink-faint: #9A9A94;
     --rule: #D8D4CC; --accent: #8B1A1A; --accent-light: #F5EAEA;
     --teal: #1A5C4A; --teal-light: #E6F0EC; --gold: #8B6914; --gold-light: #F5F0E6;
-    --topic: #8B5E1A; --topic-light: #F5F0E6; --topic-border: #C4B080;
+    --topic: #8B5E1A; --pill-bg: #F5F0E6; --pill-border: #C4B080;
   }
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -27,26 +27,29 @@
   nav a:hover, nav a.active { color: var(--accent); border-bottom-color: var(--accent); }
   main { max-width: 1100px; margin: 0 auto; padding: 3rem 2.5rem 5rem; }
   .topic-meta { display: flex; align-items: center; gap: 1rem; margin-bottom: 2.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--rule); flex-wrap: wrap; }
-  .meta-pill { font-size: 12px; padding: 4px 12px; border-radius: 2px; font-weight: 400; border: 1px solid; background: var(--topic-light); color: var(--topic); border-color: var(--topic-border); }
+  .meta-pill { font-size: 12px; padding: 4px 12px; border-radius: 2px; font-weight: 400; border: 1px solid; background: var(--pill-bg); color: var(--topic); border-color: var(--pill-border); }
   .meta-pill-neutral { font-size: 12px; padding: 4px 12px; border-radius: 2px; border: 1px solid; background: white; color: var(--ink-muted); border-color: var(--rule); }
   .two-col { display: grid; grid-template-columns: 1fr 300px; gap: 2.5rem; align-items: start; }
   @media (max-width: 768px) { .two-col { grid-template-columns: 1fr; } }
   .section-label { font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--ink-faint); font-weight: 500; margin-bottom: 1rem; }
   .artifacts-list { display: flex; flex-direction: column; gap: 1rem; }
   .artifact-card { background: white; border: 1px solid var(--rule); border-radius: 4px; padding: 1.25rem 1.5rem; text-decoration: none; color: inherit; display: flex; align-items: flex-start; gap: 1rem; transition: border-color 0.2s, box-shadow 0.2s; }
+  .artifact-card.live { border-left: 3px solid var(--teal); }
   .artifact-card:hover { border-color: #C4BFB8; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
   .icon-box { width: 38px; height: 38px; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
-  .i1 { background: var(--topic-light); } .i2 { background: var(--gold-light); } .i3 { background: var(--accent-light); }
   .artifact-body { flex: 1; }
   .artifact-title { font-size: 15px; font-weight: 500; margin-bottom: 3px; }
   .artifact-desc { font-size: 13px; color: var(--ink-muted); line-height: 1.5; }
   .artifact-tags { display: flex; gap: 6px; margin-top: 8px; flex-wrap: wrap; }
   .tag { font-size: 11px; padding: 2px 8px; background: var(--cream); border: 1px solid var(--rule); border-radius: 2px; color: var(--ink-faint); }
+  .tag-live { background: var(--teal-light); border-color: #A0C4B8; color: var(--teal); font-weight: 500; }
   .artifact-arrow { font-size: 16px; color: var(--ink-faint); margin-left: auto; flex-shrink: 0; transition: transform 0.2s, color 0.2s; }
   .artifact-card:hover .artifact-arrow { transform: translateX(3px); color: var(--topic); }
   .coming-soon { opacity: 0.5; cursor: default; }
   .coming-soon:hover { border-color: var(--rule); box-shadow: none; }
+  .live-badge { font-size: 10px; padding: 2px 7px; background: var(--teal-light); color: var(--teal); border: 1px solid #A0C4B8; border-radius: 2px; font-weight: 500; margin-left: 8px; }
   .coming-badge { font-size: 10px; padding: 2px 7px; background: var(--gold-light); color: var(--gold); border: 1px solid #D4C090; border-radius: 2px; font-weight: 500; margin-left: 8px; }
+  .source-line { font-size: 11px; color: var(--ink-faint); margin-top: 6px; font-style: italic; }
   .sidebar { display: flex; flex-direction: column; gap: 1.25rem; }
   .sidebar-card { background: white; border: 1px solid var(--rule); border-radius: 4px; padding: 1.25rem; }
   .sidebar-card h3 { font-family: 'EB Garamond', serif; font-size: 1.05rem; font-weight: 500; margin-bottom: 0.75rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--rule); }
@@ -57,7 +60,7 @@
   .notebook-link:hover { background: #D0E8E0; }
   .notebook-link-text strong { display: block; font-size: 13px; font-weight: 500; color: var(--teal); }
   .notebook-link-text span { font-size: 12px; color: var(--teal); opacity: 0.8; }
-  .progress-bar { height: 5px; background: var(--rule); border-radius: 3px; overflow: hidden; margin-top: 8px; }
+  .progress-bar { height: 5px; background: var(--rule); border-radius: 3px; overflow: hidden; margin-top: 6px; }
   .progress-fill { height: 100%; background: var(--topic); border-radius: 3px; }
   .progress-label { display: flex; justify-content: space-between; font-size: 12px; color: var(--ink-faint); margin-top: 0.5rem; }
   footer { border-top: 1px solid var(--rule); padding: 1.5rem 2.5rem; text-align: center; font-size: 12px; color: var(--ink-faint); }
@@ -86,44 +89,38 @@
 <main>
   <div class="topic-meta">
     <span class="meta-pill">10–15 marks</span>
-    <span class="meta-pill-neutral">Radiation oncology</span>
+    <span class="meta-pill-neutral">2 artifacts published</span>
   </div>
   <div class="two-col">
     <div>
       <p class="section-label">Study Artifacts</p>
       <div class="artifacts-list">
-        <a href="#" class="artifact-card">
-          <div class="icon-box i1">🎯</div>
+        <a href="gastric_cancer_summary.html" class="artifact-card live" target="_blank">
+          <div class="icon-box" style="background:#F5F0E6">🫁</div>
           <div class="artifact-body">
-            <p class="artifact-title">Siewert Classification — GEJ Tool</p>
-            <p class="artifact-desc">Classify gastroesophageal junction tumors by Siewert type with implications for surgery and RT technique.</p>
-            <div class="artifact-tags"><span class="tag">Siewert</span><span class="tag">GEJ</span><span class="tag">Interactive</span></div>
+            <p class="artifact-title">Gastric Cancer — Comprehensive Summary <span class="live-badge">Live</span></p>
+            <p class="artifact-desc">Tabbed interactive reference covering epidemiology, Lauren classification, TCGA subtypes, staging, surgical options (D1/D2, ESD), perioperative therapy (FLOT/MAGIC/INT-0116), targeted agents, RT planning volumes, and 19 high-yield exam takeaways.</p>
+            <div class="artifact-tags"><span class="tag tag-live">Published</span><span class="tag">Gastric</span><span class="tag">TCGA subtypes</span><span class="tag">CPS scoring</span><span class="tag">RT volumes</span><span class="tag">Exam takeaways</span></div>
+            <p class="source-line">Claude.ai chat · Apr 2026</p>
           </div>
           <span class="artifact-arrow">→</span>
         </a>
-        <a href="#" class="artifact-card">
-          <div class="icon-box i2">📝</div>
+        <a href="esophageal_cancer_nccn_summary.html" class="artifact-card live" target="_blank">
+          <div class="icon-box" style="background:#E6F0EC">🔭</div>
           <div class="artifact-body">
-            <p class="artifact-title">Esophageal Cancer CRT Quiz</p>
-            <p class="artifact-desc">Definitive vs neoadjuvant — CROSS trial, dose, and target volumes in exam-style MCQ format.</p>
-            <div class="artifact-tags"><span class="tag">CRT</span><span class="tag">CROSS</span><span class="tag">MCQ</span></div>
+            <p class="artifact-title">Esophageal Cancer NCCN Summary <span class="live-badge">Live</span></p>
+            <p class="artifact-desc">Dark-theme dashboard covering treatment pathways, RT volumes, CROSS trial, definitive CRT, metastatic treatment, targeted therapies, and biomarker testing guide. 8 navigation sections.</p>
+            <div class="artifact-tags"><span class="tag tag-live">Published</span><span class="tag">Esophageal</span><span class="tag">CROSS trial</span><span class="tag">Siewert</span><span class="tag">CRT</span><span class="tag">Biomarkers</span></div>
+            <p class="source-line">Claude.ai chat · Apr 2026</p>
           </div>
           <span class="artifact-arrow">→</span>
         </a>
         <div class="artifact-card coming-soon">
-          <div class="icon-box i3">📋</div>
+          <div class="icon-box" style="background:#F5F0E6">📝</div>
           <div class="artifact-body">
-            <p class="artifact-title">Gastric Cancer — Evidence Summary <span class="coming-badge">Coming soon</span></p>
-            <p class="artifact-desc">INT-0116, MAGIC, FLOT — key numbers and current practice.</p>
-            <div class="artifact-tags"><span class="tag">Gastric</span><span class="tag">Trials</span><span class="tag">Notes</span></div>
-          </div>
-        </div>
-        <div class="artifact-card coming-soon">
-          <div class="icon-box i1">🔬</div>
-          <div class="artifact-body">
-            <p class="artifact-title">Esophageal Anatomy &amp; Target Volumes <span class="coming-badge">Coming soon</span></p>
-            <p class="artifact-desc">CTV definition for upper, mid, and lower esophagus with nodal stations.</p>
-            <div class="artifact-tags"><span class="tag">Anatomy</span><span class="tag">CTV</span><span class="tag">Nodal</span></div>
+            <p class="artifact-title">UGI MCQ Quiz <span class="coming-badge">Coming soon</span></p>
+            <p class="artifact-desc">Exam-style questions on Siewert classification, CROSS trial data, dose constraints, and CRT indications.</p>
+            <div class="artifact-tags"><span class="tag">MCQ</span><span class="tag">Exam prep</span></div>
           </div>
         </div>
       </div>
@@ -138,21 +135,21 @@
       </a>
       <div class="sidebar-card">
         <h3>Module Progress</h3>
-        <div class="progress-label"><span>Artifacts complete</span><span>1 / 4</span></div>
-        <div class="progress-bar"><div class="progress-fill" style="width: 25%"></div></div>
+        <div class="progress-label"><span>Artifacts published</span><span>2 / 3</span></div>
+        <div class="progress-bar"><div class="progress-fill" style="width: 66%"></div></div>
       </div>
       <div class="sidebar-card">
         <h3>Key Exam Topics</h3>
         <ul class="key-topics">
-          <li>Esophageal cancer — squamous vs adenocarcinoma</li>
+          <li>Esophageal cancer — SCC vs adenocarcinoma</li>
           <li>Siewert classification of GEJ tumors</li>
           <li>Definitive vs neoadjuvant CRT</li>
-          <li>CROSS trial — key results</li>
-          <li>Gastric cancer — D1 vs D2 resection</li>
-          <li>INT-0116 / MAGIC / FLOT evidence</li>
+          <li>CROSS trial results</li>
+          <li>Gastric cancer — D1 vs D2</li>
+          <li>INT-0116 / MAGIC / FLOT</li>
           <li>Esophageal target volume definition</li>
-          <li>Dose constraints — lung, heart, spinal cord</li>
-          <li>Nutritional support during RT</li>
+          <li>Dose constraints (lung, heart, cord)</li>
+          <li>CPS scoring for PD-L1</li>
         </ul>
       </div>
       <div class="sidebar-card">
